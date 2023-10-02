@@ -10,7 +10,7 @@ function getClassName($variable)
     }
 }
 
-function testUnitaire(string $text, $output, $input): void
+function testUnitaire(string $text, $input, $output): void
 {
     echo "$text\n";
     if ($input === $output) {
@@ -20,16 +20,17 @@ function testUnitaire(string $text, $output, $input): void
         $classeInput = getClassName($input);
         $classeOutput = getClassName($output);
         echo "L'entrée est un objet " . RED . $classeInput . RESET . ESC;
-        echo "La valeur attendue est un objet ". RED .$classeOutput. RESET . ESC;
-        echo "Souhaitez vous un dump ? : o/n".ESC;
+        echo "La valeur attendue est un objet " . RED . $classeOutput . RESET . ESC;
+        echo "Souhaitez vous un " . RED . "dump des variables ?" . RESET . " : o/n" . ESC;
         $saisieUtilisateur = readline();
         if ($saisieUtilisateur == "o") {
-            echo "Entrée -->".ESC;
+            echo LINE;
+            echo "Valeur entrée -->" . ESC;
             dump($input);
-            echo "_____________________________________".ESC;
-            echo "Valeur attendue -->".ESC;
+            echo LINE;
+            echo "Valeur attendue -->" . ESC;
             dump($output);
-            echo "_____________________________________";
+            echo LINE;
         }
     }
 }
