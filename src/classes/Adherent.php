@@ -36,14 +36,14 @@ class Adherent
 
     private function genererNumero(): string
     {
-        // On genere un numéro aléatoire
+        // On génère un numéro aléatoire
         $randNumber = rand(0, 999999);
 
-        // On le formate pour qu'il corresponde au format "XXXXXX"
+        // On le formate pour qu'il corresponde au format "XXXXXX".
         $numberFormat = sprintf("%'.06d", $randNumber);
 
-        // On le concatène au format "AD-XXXXXXX"
-        return "AD-{$randNumber}";
+        // On le concatène au format "AD-XXXXXXX".
+        return "AD-$numberFormat";
     }
 
     /**
