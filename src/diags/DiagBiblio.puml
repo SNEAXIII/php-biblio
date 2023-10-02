@@ -1,0 +1,46 @@
+@startuml
+
+
+
+Class Livre {
+-string isbn
+-string auteur
+-int nombrePage
+}
+
+Class Bluray {
+-string realisateur
+-int duree
+-dateTime anneeSortie
+}
+
+Abstract Class Media {
+#string titre
+#int dureeEmprunt
+}
+Class Magazine {
+-int numero
+-dateTime datePublication
+}
+
+
+Class Emprunt {
+-dateTime dateEmprunt
+-dateTime dateretourEstime
+-dateTime dateretourEffectif
+}
+
+Class Adherant {
+-string numeroAdherant
+-string nom
+-string prenom
+-string email
+-dateTime dateAdhesion
+}
+
+Livre --|> Media
+Bluray --|> Media
+Magazine --|> Media
+Adherant "1..*" --> "1..1" Emprunt  : associé >
+Media "1..*" <-- "1..1" Emprunt  : concerne >
+@enduml
