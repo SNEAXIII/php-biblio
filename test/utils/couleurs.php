@@ -8,6 +8,7 @@ const RED = "\033[31m";
 const BLACK = "\033[30m";
 const RESET = "\033[0m";
 const ESC = "\n";
+const LINE = "_____________________________________" . ESC;
 
 // Couleurs de fond
 const RED_BACK = "\033[41m";
