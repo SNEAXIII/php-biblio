@@ -45,9 +45,9 @@ class Adherant
         // On le concatène au format "AD-XXXXXXX"
         return "AD-{$randNumber}";
     }
-//    public function renouvelerAdhesion() : void {
-//
-//    }
+    public function renouvelerAdhesion() : void {
+        $this->dateAdhesion->modify("+1year");
+    }
     /**
      * @return string
      */

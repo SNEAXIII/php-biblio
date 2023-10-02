@@ -2,7 +2,8 @@
 
 use App\classes\Adherant;
 
-require "test\utils\couleurs.php";
+
+require "test\unitaire\main-test.php";
 require "vendor\autoload.php";
 
 $dateAdhestionCustom = "20/01/2000";
@@ -12,10 +13,13 @@ $adherantDateDefinie = new Adherant("Jamie",
 $adherantDatenonDefinie = new Adherant("Almiche",
     "Ganache", "test@test.com");
 
-echo "Test de creation de nouvel adhérant avec une date définie \n";
-if ($adherantDateDefinie->getDateAdhesion() == $dateAdhestionCustom) {
-    echo GREEN."Le test est valide".RESET;
-}
+
+testUnitaire(
+    "Verification si un nouvel adhérant créé avec une date définie",
+    $adherantDateDefinie->getDateAdhesion(),
+    $dateAdhestionCustom
+);
+
 
 //dump($adherantDateDefinie);
 //dump($adherantDatenonDefinie);
