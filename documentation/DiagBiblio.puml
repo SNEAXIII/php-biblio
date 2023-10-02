@@ -1,7 +1,5 @@
 @startuml
 
-
-
 Class Livre {
 -string isbn
 -string auteur
@@ -14,20 +12,13 @@ Class Bluray {
 -dateTime anneeSortie
 }
 
-Abstract Class Media {
-#string titre
-#int dureeEmprunt
-}
 Class Magazine {
 -int numero
 -dateTime datePublication
 }
-
-
-Class Emprunt {
--dateTime dateEmprunt
--dateTime dateretourEstime
--dateTime dateretourEffectif
+Abstract Class Media {
+#string titre
+#int dureeEmprunt
 }
 
 Class Adherant {
@@ -37,10 +28,17 @@ Class Adherant {
 -string email
 -dateTime dateAdhesion
 }
+Class Emprunt {
+-dateTime dateEmprunt
+-dateTime dateretourEstime
+-dateTime dateretourEffectif
+}
+
+
 
 Livre --|> Media
 Bluray --|> Media
 Magazine --|> Media
-Adherant "1..*" --> "1..1" Emprunt  : associé >
-Media "1..*" <-- "1..1" Emprunt  : concerne >
+Adherant "1..*" <--> "1..1" Emprunt  : associé >
+Media "0..*" <-- "1..1" Emprunt  : concerne >
 @enduml
