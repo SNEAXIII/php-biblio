@@ -6,7 +6,7 @@ use App\classes\Adherent;
 require "test\unitaire\main-test.php";
 require "vendor\autoload.php";
 
-$dateAdhestionCustom = "20/01/2000";
+$dateAdhestionCustom = "05/11/2022";
 
 $adherentDateDefinie = new Adherent("Jamie",
     "Sacripan", "test@test.com", $dateAdhestionCustom);
@@ -23,6 +23,14 @@ testUnitaire(
     $adherentDatenonDefinie -> getDateAdhesionToString(),
     (new DateTime()) -> format("d/m/Y")
 );
+
+
+testUnitaire(
+    "On regarde si l'abonnement est toujours valide",
+    $adherentDateDefinie->ifAbonnementEnCours(),
+    false
+);
+
 
 //On renouvelle pour 1 an l'abonnement
 $adherentDateDefinie -> renouvelerAdhesion();

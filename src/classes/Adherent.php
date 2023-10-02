@@ -46,15 +46,33 @@ class Adherent
         return "AD-{$randNumber}";
     }
 
+    /**
+     * @return string
+     */
+    public function getInformations(): string
+    {
+        return
+            "Nom et prénom de l'adhérent : $this->nom $this->prenom" . ESC .
+            "Email de l'adhérent : $this->email" . ESC .
+            "Date de l'adhésion : {$this->getDateAdhesionToString()}";
+    }
+    public function ifAbonnementEnCours() : bool {
+        $dateCourante = new \DateTime();
+        $dateButoir = (clone $this->dateAdhesion)->modify("+1year");
+        $ifAdhesionValide = $dateCourante > $dateButoir;
+        if ($ifAdhesionValide) {
+            return true;
+        }
+        return false;
+
+    }
+    /**
+     * @return void
+     */
     public function renouvelerAdhesion(): void
     {
         $this -> dateAdhesion -> modify("+1year");
     }
-
-//    public function getInformations(): string
-//    {
-////        "Nom adhérent"
-//    }
 
     /**
      * @return string

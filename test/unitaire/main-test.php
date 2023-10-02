@@ -17,14 +17,15 @@ function testUnitaire(string $text, $input, $output): void
         echo GREEN . "Le test est valide" . RESET . ESC;
     } else {
         echo RED . "Le test n'est pas valide" . RESET . ESC;
+        echo LINE;
         $classeInput = getClassName($input);
         $classeOutput = getClassName($output);
         echo "L'entrée est un objet " . RED . $classeInput . RESET . ESC;
         echo "La valeur attendue est un objet " . RED . $classeOutput . RESET . ESC;
         echo "Souhaitez vous un " . RED . "dump des variables ?" . RESET . " : o/n" . ESC;
+        echo LINE;
         $saisieUtilisateur = readline();
         if ($saisieUtilisateur == "o") {
-            echo LINE;
             echo "Valeur entrée -->" . ESC;
             dump($input);
             echo LINE;
