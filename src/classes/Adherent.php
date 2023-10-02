@@ -2,9 +2,9 @@
 
 namespace App\classes;
 
-class Adherant
+class Adherent
 {
-    private string $numeroAdherant;
+    private string $numeroadherent;
     private string $nom;
     private string $prenom;
     private string $email;
@@ -21,16 +21,16 @@ class Adherant
     {
         date_default_timezone_set("Europe/Paris");
 
-        $this->numeroAdherant = $this->genererNumero();
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->email = $email;
+        $this -> numeroadherent = $this -> genererNumero();
+        $this -> nom = $nom;
+        $this -> prenom = $prenom;
+        $this -> email = $email;
 
         // On verifie si une date est saisie, et si ce n'est pas le cas la date d'adhésion sera égale à aujourd'hui
         if (is_null($dateAdhesion)) {
-            $this->dateAdhesion = new \DateTime();
+            $this -> dateAdhesion = new \DateTime();
         } else {
-            $this->dateAdhesion = \DateTime::createFromFormat("d/m/Y", $dateAdhesion);
+            $this -> dateAdhesion = \DateTime ::createFromFormat("d/m/Y", $dateAdhesion);
         }
     }
 
@@ -45,15 +45,23 @@ class Adherant
         // On le concatène au format "AD-XXXXXXX"
         return "AD-{$randNumber}";
     }
-    public function renouvelerAdhesion() : void {
-        $this->dateAdhesion->modify("+1year");
+
+    public function renouvelerAdhesion(): void
+    {
+        $this -> dateAdhesion -> modify("+1year");
     }
+
+//    public function getInformations(): string
+//    {
+////        "Nom adhérent"
+//    }
+
     /**
      * @return string
      */
-    public function getNumeroAdherant(): string
+    public function getNumeroadherent(): string
     {
-        return $this->numeroAdherant;
+        return $this -> numeroadherent;
     }
 
     /**
@@ -61,7 +69,7 @@ class Adherant
      */
     public function getNom(): string
     {
-        return $this->nom;
+        return $this -> nom;
     }
 
     /**
@@ -69,7 +77,7 @@ class Adherant
      */
     public function getPrenom(): string
     {
-        return $this->prenom;
+        return $this -> prenom;
     }
 
     /**
@@ -77,15 +85,23 @@ class Adherant
      */
     public function getEmail(): string
     {
-        return $this->email;
+        return $this -> email;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateAdhesion(): ?\DateTime
+    {
+        return $this -> dateAdhesion;
     }
 
     /**
      * @return string
      */
-    public function getDateAdhesion(): string
+    public function getDateAdhesionToString(): string
     {
-        return $this->dateAdhesion->format("d/m/Y");
+        return $this -> dateAdhesion -> format("d/m/Y");
     }
 
 
