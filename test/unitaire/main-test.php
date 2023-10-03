@@ -1,7 +1,7 @@
 <?php
 require "test\utils\couleurs.php";
 
-function getClassName($variable)
+function getClassName($variable): string
 {
     if (is_object($variable)) {
         return get_class($variable);
@@ -10,9 +10,10 @@ function getClassName($variable)
     }
 }
 
-function testUnitaire(string $text, $input, $output): void
+function assertTestUnitaire(string $text, $input, $output): void
 {
     echo "$text\n";
+    // Assertion
     if ($input === $output) {
         echo GREEN . "Le test est valide" . RESET . ESC;
     } else {
