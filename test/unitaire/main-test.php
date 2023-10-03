@@ -12,12 +12,12 @@ function getClassName($variable): string
 
 function assertTestUnitaire(string $text, $input, $output): void
 {
-    echo "$text\n";
+    echo LINE."$text\n";
     // Assertion
     if ($input === $output) {
         echo GREEN . "Le test est valide" . RESET . ESC;
     } else {
-        echo RED . "Le test n'est pas valide" . RESET . ESC;
+        echo RED_BACK . "Le test n'est pas valide" . RESET . ESC;
         echo LINE;
         $classeInput = getClassName($input);
         $classeOutput = getClassName($output);
