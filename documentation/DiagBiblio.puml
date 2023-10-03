@@ -9,7 +9,7 @@ Class Livre {
 Class Bluray {
 -string realisateur
 -int duree
--dateTime anneeSortie
+-int anneeSortie
 }
 
 Class Magazine {
@@ -40,6 +40,7 @@ Class Emprunt {
 +show(): string
 +ifEnCours():bool
 +ifEnAlerte(): bool
++rendu():void
 }
 
 
