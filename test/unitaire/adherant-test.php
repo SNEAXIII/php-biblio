@@ -6,43 +6,63 @@ use App\classes\Adherent;
 require "test\unitaire\main-test.php";
 require "vendor\autoload.php";
 
+// Fonction récuperée sur internet
+function isDigits($string): bool
+{
+    return !preg_match ("/[^0-9]/", $string);
+}
+function testNumeroAdherent (string $numeroAdherent) : bool {
+    $ifTailleEgaleANeuf = strlen($numeroAdherent) == 9;
+    $ifCommenceParABTiret = str_starts_with($numeroAdherent, "AB-");
+    $ifContientNombreBienPlace = isDigits(substr($numeroAdherent,3));
+    if ($ifTailleEgaleANeuf && $ifCommenceParABTiret && $ifContientNombreBienPlace) {
+        return true;
+    }
+    return false;
+}
+
 echo ESC;
 echo GREEN_BACK . BLACK;
 echo "Tests : classe Adherent";
 echo RESET;
 echo ESC;
 
-// Test numéro 1
-$textTest1 = "On vérifie si la date ajoutée en paramètre est bien prise en compte lors de la création de l'instance";
-// Arrange
-$dateAdhestionDefinie = "05/11/2022";
-$adherentDateDefinie = new Adherent("Jamie",
-    "Sacripan", "test@test.com", $dateAdhestionDefinie);
-$valeurAttendueTest1 = $dateAdhestionDefinie;
-// Act
-$valeurEntreeTest1 = $adherentDateDefinie->getDateAdhesionToString();
-// Assertion
-assertTestUnitaire(
-    $textTest1,
-    $valeurEntreeTest1,
-    $valeurAttendueTest1
-);
 
+//  vérifier que la date d’adhésion, si non précisée à la création,est égale à ladate du jour
+$textTestDateNonDefinie = "Test: vérifier que la date d’adhésion, si non précisée à la création, est égale à la date du jour";
 
-// Test numéro 2
-$textTest2 = "On vérifie si le fait de ne pas mettre de date lors de la création de l'instance entraine que la date de l'adhesion soit aujourd'hui";
 // Arrange
-$adherentDateNonDefinie = new Adherent("Almiche",
-    "Ganache", "test@test.com");
-$valeurAttendueTest2 = (new DateTime())->format("d/m/Y");
+$adherentDateNonDefinie = new Adherent("Almiche","Ganache", "test@test.com");
+$valeurAttendueTestDateNonDefinie = (new DateTime())->format("d/m/Y");
+
 // Act
-$valeurEntreeTest2 = $adherentDateNonDefinie->getDateAdhesionToString();
+$valeurEntreeTestDateNonDefinie = $adherentDateNonDefinie->getDateAdhesionToString();
+
 // Assert
 assertTestUnitaire(
-    $textTest2,
-    $valeurEntreeTest2,
-    $valeurAttendueTest2
+    $textTestDateNonDefinie,
+    $valeurEntreeTestDateNonDefinie,
+    $valeurAttendueTestDateNonDefinie
 );
+
+// vérifier que la date d’adhésion, si précisée à la création, est bien prise en compte"
+$textTestDateDefinie = "Test: vérifier que la date d’adhésion, si précisée à la création, est bien prise en compte";
+// Arrange
+$dateDefinie = "05/11/2022";
+$adherentDateDefinie = new Adherent("Jamie",
+    "Sacripan", "test@test.com", $dateDefinie);
+$valeurAttendueTestDateDefinie = $dateDefinie;
+// Act
+$valeurEntreeTestDateDefinie = $adherentDateDefinie->getDateAdhesionToString();
+// Assertion
+assertTestUnitaire(
+    $textTestDateDefinie,
+    $valeurEntreeTestDateDefinie,
+    $valeurAttendueTestDateDefinie
+);
+
+
+
 
 // Test numéro 3
 $textTest3 = "On regarde si l'abonnement est toujours valide";
