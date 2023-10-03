@@ -124,10 +124,10 @@ class Emprunt
         return $this -> dateRetourEstime -> format("d/m/Y");
     }
 
-    public function setDateRetourNePasUtiliser(int $jours): void
+    public function modifyDateRetourNePasUtiliser(int $jours): void
     {
-        $this -> dateEmprunt -> modify("-{$jours}day");
-        $this -> dateRetourEstime -> modify("-{$jours}day");
+        $this -> dateEmprunt -> modify("{$jours}day");
+        $this -> dateRetourEstime -> modify("{$jours}day");
     }
 
 }
