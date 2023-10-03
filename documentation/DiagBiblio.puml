@@ -19,6 +19,7 @@ Class Magazine {
 Abstract Class Media {
 #string titre
 #int dureeEmprunt
++ show():string
 }
 
 Class Adherant {
@@ -27,11 +28,18 @@ Class Adherant {
 -string prenom
 -string email
 -dateTime dateAdhesion
+-genererNumero(): string
++ifAbonnementEnCours() : bool
++renouvelerAdhesion(): void
++getDateAdhesionToString(): string
 }
 Class Emprunt {
 -dateTime dateEmprunt
 -dateTime dateretourEstime
 -dateTime dateretourEffectif
++show(): string
++ifEnCours():bool
++ifEnAlerte(): bool
 }
 
 
