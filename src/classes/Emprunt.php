@@ -18,11 +18,11 @@ class Emprunt
      */
     public function __construct(Adherent $adherent, Media $media)
     {
-        $this->dateRetourEffectif = null;
-        $this->dateEmprunt = new DateTime();
-        $this->media = $media;
-        $this->adherent = $adherent;
-        $this->dateRetourEstime = (new DateTime())->modify("+{$this->media->getDureeEmprunt()}days");
+        $this -> dateRetourEffectif = null;
+        $this -> dateEmprunt = new DateTime();
+        $this -> media = $media;
+        $this -> adherent = $adherent;
+        $this -> dateRetourEstime = (new DateTime()) -> modify("+{$this->media->getDureeEmprunt()}days");
     }
 
     /**
@@ -30,7 +30,7 @@ class Emprunt
      */
     public function getDateEmprunt(): DateTime
     {
-        return $this->dateEmprunt;
+        return $this -> dateEmprunt;
     }
 
     /**
@@ -38,7 +38,7 @@ class Emprunt
      */
     public function getDateRetourEstime(): DateTime
     {
-        return $this->dateRetourEstime;
+        return $this -> dateRetourEstime;
     }
 
     /**
@@ -46,7 +46,7 @@ class Emprunt
      */
     public function getDateRetourEffectif(): ?DateTime
     {
-        return $this->dateRetourEffectif;
+        return $this -> dateRetourEffectif;
     }
 
     /**
@@ -54,7 +54,7 @@ class Emprunt
      */
     public function getAdherent(): Adherent
     {
-        return $this->adherent;
+        return $this -> adherent;
     }
 
     /**
@@ -62,7 +62,7 @@ class Emprunt
      */
     public function getMedia(): Media
     {
-        return $this->media;
+        return $this -> media;
     }
 
     /**
@@ -74,7 +74,7 @@ class Emprunt
         $result = "{$this->media->getTitre()} a été emprunté par {$this->adherent->getPrenom()} {$this->adherent->getNom()} le {$this->dateEmprunt->format("d/m/Y")} et devrait être retourné le {$this->dateRetourEstime->format("d/m/Y")}.";
 
 
-        if ($this->ifEnCours()) {
+        if ($this -> ifEnCours()) {
             $result .= "Le media a été rendu le {$this->dateRetourEffectif->format("d/m/Y")}";
         }
 
@@ -83,7 +83,7 @@ class Emprunt
 
     public function ifEnCours(): bool
     {
-        if (isset($this->dateRetourEffectif)) {
+        if (isset($this -> dateRetourEffectif)) {
             return false;
         }
         return true;
@@ -91,8 +91,8 @@ class Emprunt
 
     public function ifEnAlerte(): bool
     {
-        $ifAlerte = $this->dateRetourEstime < new DateTime();
-        if ($this->ifEnCours() && $ifAlerte) {
+        $ifAlerte = $this -> dateRetourEstime < new DateTime();
+        if ($this -> ifEnCours() && $ifAlerte) {
             return true;
         }
         return false;
@@ -100,20 +100,20 @@ class Emprunt
 
     public function rendu(): void
     {
-        if (!isset($this->dateRetourEffectif)) {
-            $this->dateRetourEffectif = new DateTime();
+        if (!isset($this -> dateRetourEffectif)) {
+            $this -> dateRetourEffectif = new DateTime();
         }
     }
 
     public function getdateEmpruntToString(): string
     {
-        return $this->dateEmprunt->format("d/m/Y");
+        return $this -> dateEmprunt -> format("d/m/Y");
     }
 
     public function getDateRetourEffectifToString(): ?string
     {
-        if (isset($this->dateRetourEffectif)) {
-            return $this->dateRetourEffectif->format("d/m/Y");
+        if (isset($this -> dateRetourEffectif)) {
+            return $this -> dateRetourEffectif -> format("d/m/Y");
         } else {
             return null;
         }
@@ -121,12 +121,13 @@ class Emprunt
 
     public function getDateRetourEstimeToString(): string
     {
-        return $this->dateRetourEstime->format("d/m/Y");
+        return $this -> dateRetourEstime -> format("d/m/Y");
     }
 
-    public function setDateRetourNePasUtiliser(int $jours) : void {
-        $this->dateEmprunt->modify("-{$jours}day");
-        $this->dateRetourEstime->modify("-{$jours}day");
+    public function setDateRetourNePasUtiliser(int $jours): void
+    {
+        $this -> dateEmprunt -> modify("-{$jours}day");
+        $this -> dateRetourEstime -> modify("-{$jours}day");
     }
 
 }

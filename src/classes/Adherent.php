@@ -58,9 +58,11 @@ class Adherent
             "Email de l'adhérent : $this->email" . ESC .
             "Date de l'adhésion : {$this->getDateAdhesionToString()}";
     }
-    public function ifAbonnementEnCours() : bool {
+
+    public function ifAbonnementEnCours(): bool
+    {
         $dateCourante = new DateTime();
-        $dateButoir = (clone $this->dateAdhesion)->modify("+1year");
+        $dateButoir = (clone $this -> dateAdhesion) -> modify("+1year");
         $ifAdhesionValide = $dateCourante < $dateButoir;
         if ($ifAdhesionValide) {
             return true;
@@ -68,6 +70,7 @@ class Adherent
         return false;
 
     }
+
     /**
      * @return void
      */

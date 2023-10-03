@@ -19,12 +19,12 @@ class Magazine extends Media
         $dureeEmprunt = 10;
         parent ::__construct($titre, $dureeEmprunt);
         $this -> numero = $numero;
-        $this -> datePublication = DateTime::createFromFormat("d/m/Y",$datePublication);
+        $this -> datePublication = DateTime ::createFromFormat("d/m/Y", $datePublication);
     }
 
     public function show(): string
     {
-        return"Le magazine $this->titre numéro $this->numero a été publié le {$this->datePublication->format("d/m/Y")} et doit être restitué sous $this->dureeEmprunt";
+        return "Le magazine $this->titre numéro $this->numero a été publié le {$this->datePublication->format("d/m/Y")} et doit être restitué sous $this->dureeEmprunt";
     }
 
 
