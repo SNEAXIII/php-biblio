@@ -81,6 +81,9 @@ class Emprunt
         return $result;
     }
 
+    /**
+     * @return bool
+     */
     public function ifEnCours(): bool
     {
         if (isset($this -> dateRetourEffectif)) {
@@ -89,6 +92,9 @@ class Emprunt
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function ifEnAlerte(): bool
     {
         $ifAlerte = $this -> dateRetourEstime < new DateTime();
@@ -98,6 +104,9 @@ class Emprunt
         return false;
     }
 
+    /**
+     * @return void
+     */
     public function rendu(): void
     {
         if (!isset($this -> dateRetourEffectif)) {
@@ -105,11 +114,17 @@ class Emprunt
         }
     }
 
+    /**
+     * @return string
+     */
     public function getdateEmpruntToString(): string
     {
         return $this -> dateEmprunt -> format("d/m/Y");
     }
 
+    /**
+     * @return string|null
+     */
     public function getDateRetourEffectifToString(): ?string
     {
         if (isset($this -> dateRetourEffectif)) {
@@ -119,13 +134,21 @@ class Emprunt
         }
     }
 
+    /**
+     * @return string
+     */
     public function getDateRetourEstimeToString(): string
     {
         return $this -> dateRetourEstime -> format("d/m/Y");
     }
 
+    /**
+     * @param int $jours
+     * @return void
+     */
     public function modifyDateRetourNePasUtiliser(int $jours): void
     {
+        // Cette méthode sert uniquement à simuler un nouvel emprunt qui se serait déroulé x jour avant
         $this -> dateEmprunt -> modify("{$jours}day");
         $this -> dateRetourEstime -> modify("{$jours}day");
     }

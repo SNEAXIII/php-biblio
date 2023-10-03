@@ -116,6 +116,7 @@ $textTestEnAlerte = "Test: vérifier que l’emprunt est en alerte quand la date
 
 // Arrange
 $empruntEmpruntEnAlerte = $empruntEmpruntEnCours = new Emprunt($adherent, $livre);
+// On soustrait 30 jours sur la date d'emprunt et d'emprunt estimé avec une méthode secrete
 $empruntEmpruntEnAlerte->modifyDateRetourNePasUtiliser(-30);
 $valeurAttendueEnAlerte = true;
 // Act
