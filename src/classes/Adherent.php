@@ -59,7 +59,7 @@ class Adherent
     public function ifAbonnementEnCours() : bool {
         $dateCourante = new \DateTime();
         $dateButoir = (clone $this->dateAdhesion)->modify("+1year");
-        $ifAdhesionValide = $dateCourante > $dateButoir;
+        $ifAdhesionValide = $dateCourante < $dateButoir;
         if ($ifAdhesionValide) {
             return true;
         }
