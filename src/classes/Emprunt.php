@@ -105,9 +105,24 @@ class Emprunt
     }
 
     /**
+     * @return bool
+     */
+    public function ifRenduEnRetard(): bool
+    {
+        if ($this -> ifEnCours()) {
+            return false;
+        }
+        $ifRenduEnRetard = $this->dateRetourEffectif > $this->dateRetourEstime;
+        if ($ifRenduEnRetard) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * @return void
      */
-    public function rendu(): void
+    public function rends(): void
     {
         if (!isset($this -> dateRetourEffectif)) {
             $this -> dateRetourEffectif = new DateTime();

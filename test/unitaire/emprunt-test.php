@@ -26,10 +26,10 @@ $textTestDateCreationEgalDateJour = "Test: vérifier que la date d’emprunt, à
 
 // Arrange
 $empruntDateCreationEgalDateJour = new Emprunt($adherent, $livre);
-$valeurAttendueTestDateCreationEgalDateJour = (new DateTime())->format("d/m/Y");
+$valeurAttendueTestDateCreationEgalDateJour = (new DateTime()) -> format("d/m/Y");
 
 // Act
-$valeurEntreeTestDateCreationEgalDateJour = $empruntDateCreationEgalDateJour->getdateEmpruntToString();
+$valeurEntreeTestDateCreationEgalDateJour = $empruntDateCreationEgalDateJour -> getdateEmpruntToString();
 
 // Assert
 assertTestUnitaire(
@@ -44,10 +44,10 @@ $textTestDateCreationPlus21Jours = "Test: vérifier que la date de retour estim�
 
 // Arrange
 $empruntDateCreationPlus21Jours = new Emprunt($adherent, $livre);
-$valeurAttendueTestDateCreationPlus21Jours = (new DateTime())->modify("+21day")->format("d/m/Y");
+$valeurAttendueTestDateCreationPlus21Jours = (new DateTime()) -> modify("+21day") -> format("d/m/Y");
 
 // Act
-$valeurEntreeTestDateCreationPlus21Jours = $empruntDateCreationPlus21Jours->getDateRetourEstimeToString();
+$valeurEntreeTestDateCreationPlus21Jours = $empruntDateCreationPlus21Jours -> getDateRetourEstimeToString();
 
 // Assert
 assertTestUnitaire(
@@ -62,10 +62,10 @@ $textTestDateCreationPlus15Jours = "Test: vérifier que la date de retour estim�
 
 // Arrange
 $empruntDateCreationPlus15Jours = new Emprunt($adherent, $blueray);
-$valeurAttendueTestDateCreationPlus15Jours = (new DateTime())->modify("+15day")->format("d/m/Y");
+$valeurAttendueTestDateCreationPlus15Jours = (new DateTime()) -> modify("+15day") -> format("d/m/Y");
 
 // Act
-$valeurEntreeTestDateCreationPlus15Jours = $empruntDateCreationPlus15Jours->getDateRetourEstimeToString();
+$valeurEntreeTestDateCreationPlus15Jours = $empruntDateCreationPlus15Jours -> getDateRetourEstimeToString();
 
 // Assert
 assertTestUnitaire(
@@ -80,10 +80,10 @@ $textTestDateCreationPlus10Jours = "Test: vérifier que la date de retour estim�
 
 // Arrange
 $empruntDateCreationPlus10Jours = new Emprunt($adherent, $magazine);
-$valeurAttendueTestDateCreationPlus10Jours = (new DateTime())->modify("+10day")->format("d/m/Y");
+$valeurAttendueTestDateCreationPlus10Jours = (new DateTime()) -> modify("+10day") -> format("d/m/Y");
 
 // Act
-$valeurEntreeTestDateCreationPlus10Jours = $empruntDateCreationPlus10Jours->getDateRetourEstimeToString();
+$valeurEntreeTestDateCreationPlus10Jours = $empruntDateCreationPlus10Jours -> getDateRetourEstimeToString();
 
 // Assert
 assertTestUnitaire(
@@ -101,7 +101,7 @@ $empruntEmpruntEnCours = new Emprunt($adherent, $livre);
 $valeurAttendueEmpruntEnCours = true;
 
 // Act
-$valeurEntreeEmpruntEnCours = $empruntEmpruntEnCours->ifEnCours();
+$valeurEntreeEmpruntEnCours = $empruntEmpruntEnCours -> ifEnCours();
 
 // Assert
 assertTestUnitaire(
@@ -117,13 +117,35 @@ $textTestEnAlerte = "Test: vérifier que l’emprunt est en alerte quand la date
 // Arrange
 $empruntEmpruntEnAlerte = $empruntEmpruntEnCours = new Emprunt($adherent, $livre);
 // On soustrait 30 jours sur la date d'emprunt et d'emprunt estimé avec une méthode secrete
-$empruntEmpruntEnAlerte->modifyDateRetourNePasUtiliser(-30);
+$empruntEmpruntEnAlerte -> modifyDateRetourNePasUtiliser(-30);
 $valeurAttendueEnAlerte = true;
+
 // Act
-$valeurEntreeEnAlerte = $empruntEmpruntEnAlerte->ifEnAlerte();
+$valeurEntreeEnAlerte = $empruntEmpruntEnAlerte -> ifEnAlerte();
+
 // Assert
 assertTestUnitaire(
     $textTestEnAlerte,
     $valeurEntreeEnAlerte,
     $valeurAttendueEnAlerte
 );
+
+
+// vérifier que la durée de l’emprunt a été dépassée quand la date de retour est postérieure à la date de retour estimée
+$textTestEmpruntDepasse = "Test : vérifier que la durée de l’emprunt a été dépassée quand la date de retour est postérieure à la date de retour estimée";
+
+// Arrange
+$empruntEmpruntDepasse = new Emprunt($adherent, $livre);
+// On soustrait 30 jours sur la date d'emprunt et d'emprunt estimé avec une méthode secrete
+$empruntEmpruntDepasse -> modifyDateRetourNePasUtiliser(-30);
+// On simule un retour du média
+$empruntEmpruntDepasse -> rends();
+$valeurAttendueEmpruntDepasse = true;
+
+// Act
+$valeurEntreeEmpruntDepasse = $empruntEmpruntDepasse -> ifRenduEnRetard();
+
+// Assert
+assertTestUnitaire($textTestEmpruntDepasse,
+    $valeurEntreeEmpruntDepasse,
+    $valeurAttendueEmpruntDepasse);
