@@ -34,7 +34,7 @@ class Adherent
         }
     }
 
-    private function genererNumero(): string
+    public function genererNumero(): string
     {
         // On génère un numéro aléatoire
         $randNumber = rand(0, 999999);
