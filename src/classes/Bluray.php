@@ -12,7 +12,7 @@ class Bluray extends Media
      * @param string $titre
      * @param string $realisateur
      * @param int $duree
-     * @param string $anneeSortie
+     * @param int $anneeSortie
      */
     public function __construct(string $titre, string $realisateur, int $duree, int $anneeSortie)
     {
@@ -24,6 +24,6 @@ class Bluray extends Media
     }
     public function show(): string
     {
-        return "Le titre du blu-ray est $this->titre, son réalisateur est $this->realisateur, sortis en {$this->anneeSortie}, fait $this->duree minutes et doit etre restitué en $this->dureeEmprunt jours.";
+        return "Le titre du blu-ray est $this->titre, son réalisateur est $this->realisateur, sortis en $this->anneeSortie, fait $this->duree minutes et doit etre restitué en $this->dureeEmprunt jours.";
     }
 }

@@ -2,10 +2,12 @@
 
 namespace App\classes;
 
+use DateTime;
+
 class Magazine extends Media
 {
     private int $numero;
-    private \DateTime $datePublication;
+    private DateTime $datePublication;
 
     /**
      * @param string $titre
@@ -17,7 +19,7 @@ class Magazine extends Media
         $dureeEmprunt = 10;
         parent ::__construct($titre, $dureeEmprunt);
         $this -> numero = $numero;
-        $this -> datePublication = \DateTime::createFromFormat("d/m/Y",$datePublication);
+        $this -> datePublication = DateTime::createFromFormat("d/m/Y",$datePublication);
     }
 
     public function show(): string
@@ -35,9 +37,9 @@ class Magazine extends Media
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getDatePublication(): \DateTime
+    public function getDatePublication(): DateTime
     {
         return $this -> datePublication;
     }

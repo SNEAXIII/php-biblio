@@ -2,13 +2,15 @@
 
 namespace App\classes;
 
+use DateTime;
+
 class Adherent
 {
     private string $numeroadherent;
     private string $nom;
     private string $prenom;
     private string $email;
-    private ?\DateTime $dateAdhesion;
+    private ?DateTime $dateAdhesion;
 
     /**
      * @param string $nom
@@ -26,11 +28,11 @@ class Adherent
         $this -> prenom = $prenom;
         $this -> email = $email;
 
-        // On verifie si une date est saisie, et si ce n'est pas le cas la date d'adhésion sera égale à aujourd'hui
+        // On vérifie si une date est saisie, et si ce n'est pas le cas la date d'adhésion sera égale à aujourd'hui.
         if (is_null($dateAdhesion)) {
-            $this -> dateAdhesion = new \DateTime();
+            $this -> dateAdhesion = new DateTime();
         } else {
-            $this -> dateAdhesion = \DateTime ::createFromFormat("d/m/Y", $dateAdhesion);
+            $this -> dateAdhesion = DateTime ::createFromFormat("d/m/Y", $dateAdhesion);
         }
     }
 
@@ -42,7 +44,7 @@ class Adherent
         // On le formate pour qu'il corresponde au format "XXXXXX".
         $numberFormat = sprintf("%'.06d", $randNumber);
 
-        // On le concatène au format "AD-XXXXXXX".
+        // On le concatène au format "AD-XXXXXX".
         return "AD-$numberFormat";
     }
 
@@ -57,7 +59,7 @@ class Adherent
             "Date de l'adhésion : {$this->getDateAdhesionToString()}";
     }
     public function ifAbonnementEnCours() : bool {
-        $dateCourante = new \DateTime();
+        $dateCourante = new DateTime();
         $dateButoir = (clone $this->dateAdhesion)->modify("+1year");
         $ifAdhesionValide = $dateCourante < $dateButoir;
         if ($ifAdhesionValide) {
@@ -107,9 +109,9 @@ class Adherent
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    public function getDateAdhesion(): ?\DateTime
+    public function getDateAdhesion(): ?DateTime
     {
         return $this -> dateAdhesion;
     }

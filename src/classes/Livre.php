@@ -25,7 +25,7 @@ class Livre extends Media
 
     public function show(): string
     {
-        return "Le titre du livre est $this->titre, son ISBN est $this->isbn, écrit par $this->auteur, fait $this->nombrePages pages et doit etre restitué en $this->dureeEmprunt jours.";
+        return "Le titre du livre est $this->titre, son ISBN est $this->isbn, écrit par $this->auteur, fait $this->nombrePages pages et doit être restitué en $this->dureeEmprunt jours.";
     }
 
 }
