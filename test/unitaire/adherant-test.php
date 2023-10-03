@@ -47,9 +47,9 @@ assertTestUnitaire(
 // Test numéro 3
 $textTest3 = "On regarde si l'abonnement est toujours valide";
 // Arrange
-$dateAdhestion = "05/07/2023";
 $adherentEncours = new Adherent("Jack",
-    "Trompette", "test@test.com", $dateAdhestion);
+    "Trompette", "test@test.com");
+$adherentEncours->getDateAdhesion()->modify("-6month");
 $valeurAttendueTest3 = true;
 // Act
 $valeurEntreeTest3 = $adherentEncours->ifAbonnementEnCours();
