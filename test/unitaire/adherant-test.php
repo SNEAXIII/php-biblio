@@ -23,11 +23,7 @@ function testNumeroAdherent(string $numeroAdherent): bool
     return false;
 }
 
-echo ESC;
-echo GREEN_BACK . BLACK;
-echo "Tests : classe Adherent";
-echo RESET;
-echo ESC;
+showEntete("Adherent");
 
 
 //  vérifier que la date d’adhésion, si non précisée à la création,est égale à ladate du jour

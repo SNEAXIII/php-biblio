@@ -10,9 +10,14 @@ function getClassName($variable): string
     }
 }
 
+function showEntete($title): void
+{
+    echo ESC . GREEN_BACK . BLACK . "Tests : classe $title" . RESET . ESC;
+}
+
 function assertTestUnitaire(string $text, $input, $output): void
 {
-    echo LINE."$text\n";
+    echo LINE . "$text\n";
     // Assertion
     if ($input === $output) {
         echo GREEN . "Le test est valide" . RESET . ESC;
