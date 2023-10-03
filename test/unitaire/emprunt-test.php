@@ -146,6 +146,7 @@ $valeurAttendueEmpruntDepasse = true;
 $valeurEntreeEmpruntDepasse = $empruntEmpruntDepasse -> ifRenduEnRetard();
 
 // Assert
-assertTestUnitaire($textTestEmpruntDepasse,
+assertTestUnitaire(
+    $textTestEmpruntDepasse,
     $valeurEntreeEmpruntDepasse,
     $valeurAttendueEmpruntDepasse);
