@@ -12,7 +12,7 @@ class Bluray extends Media
      * @param string $titre
      * @param string $realisateur
      * @param int $duree
-     * @param string $anneeSortie
+     * @param int $anneeSortie
      */
     public function __construct(string $titre, string $realisateur, int $duree, int $anneeSortie)
     {
