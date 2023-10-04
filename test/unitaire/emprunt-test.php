@@ -115,7 +115,7 @@ assertTestUnitaire(
 $textTestEnAlerte = "Test: vérifier que l’emprunt est en alerte quand la date de retour estimée est antérieure à la date du jour et que l’emprunt est en cours";
 
 // Arrange
-$empruntEmpruntEnAlerte = $empruntEmpruntEnCours = new Emprunt($adherent, $livre);
+$empruntEmpruntEnAlerte = new Emprunt($adherent, $livre);
 // On soustrait 30 jours sur la date d'emprunt et d'emprunt estimé avec une méthode secrete
 $empruntEmpruntEnAlerte -> modifyDateRetourNePasUtiliser(-30);
 $valeurAttendueEnAlerte = true;
