@@ -22,8 +22,9 @@ class Bluray extends Media
         $this -> duree = $duree;
         $this -> anneeSortie = $anneeSortie;
     }
+
     public function show(): string
     {
-        return "Le titre du blu-ray est $this->titre, son réalisateur est $this->realisateur, sortis en {$this->anneeSortie}, fait $this->duree minutes et doit etre restitué en $this->dureeEmprunt jours.";
+        return "Le titre du blu-ray est $this->titre, son réalisateur est $this->realisateur, sortis en $this->anneeSortie, fait $this->duree minutes et doit etre restitué en $this->dureeEmprunt jours.";
     }
 }

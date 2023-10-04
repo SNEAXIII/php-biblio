@@ -6,7 +6,7 @@ use App\classes\Adherent;
 require "test\unitaire\main-test.php";
 require "vendor\autoload.php";
 
-// Fonction récuperée sur internet
+// Fonction récupérée sur internet
 function isDigits($string): bool
 {
     return !preg_match("/[^0-9]/", $string);
@@ -26,7 +26,7 @@ function testNumeroAdherent(string $numeroAdherent): bool
 showEntete("Adherent");
 
 
-//  vérifier que la date d’adhésion, si non précisée à la création,est égale à ladate du jour
+//  vérifier que la date d’adhésion, si non précisée à la création, est égale à la date du jour
 $textTestDateNonDefinie = "Test: vérifier que la date d’adhésion, si non précisée à la création, est égale à la date du jour";
 
 // Arrange
@@ -76,7 +76,7 @@ assertTestUnitaire(
 );
 
 
-// vérifier  que  l’adhésion est valable  (valide)  quand  la  date d’adhésion n’est pas dépassée (moins d’un an)
+// vérifier que l’adhésion est valable (valide) quand la date d’adhésion n’est pas dépassée (moins d’un an)
 $textTestEncours = "Test: vérifier  que  l’adhésion est valable  (valide)  quand  la  date d’adhésion n’est pas dépassée (moins d’un an)";
 // Arrange
 $adherentEncours = new Adherent("Jack",
@@ -93,7 +93,7 @@ assertTestUnitaire(
 );
 
 
-// vérifier  que  l’adhésion est non  valable  (invalide)  quand  la  date d’adhésion est dépassée (plus d’un an)
+// vérifier que l’adhésion est non valable (invalide) quand la date d’adhésion est dépassée (plus d’un an)
 $textTestPasEncours = "Test: vérifier  que  l’adhésion est non  valable  (invalide)  quand  la  date d’adhésion est dépassée (plus d’un an)";
 // Arrange
 $adherentPasEncours = new Adherent("Jack",
@@ -110,14 +110,14 @@ assertTestUnitaire(
 );
 
 
-// valable  (valide)  quand  la  date d’adhésion n’est pas dépassée (moins d’un an)
+// valable (valide) quand la date d’adhésion n’est pas dépassée (moins d’un an)
 $textTestRenouvellement = "Test valable  (valide)  quand  la  date d’adhésion n’est pas dépassée (moins d’un an)";
 // Arrange
 $dateAdhestion = "05/05/2023";
 $adherentRenouvellement = new Adherent("James",
     "Chapelin", "test@test.com", $dateAdhestion);
 $valeurAttendueTestRenouvellement =
-    \DateTime::createFromFormat("d/m/Y", $dateAdhestion)
+    DateTime ::createFromFormat("d/m/Y", $dateAdhestion)
         ->modify("+1year")
         ->format("d/m/Y");
 // Act
