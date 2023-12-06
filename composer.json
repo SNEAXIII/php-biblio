@@ -1,21 +1,26 @@
 {
-    "name": "bassignota/php-bibliotheque",
-    "type": "project",
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Alexis Bassignot",
-            "email": "misterbalise2@gmail.com"
-        }
-    ],
-    "require-dev": {
-        "symfony/var-dumper": "^6.3",
-        "phpunit/phpunit": "^10.3"
-    },
+  "name": "bassignota/php-bibliotheque",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Alexis Bassignot",
+      "email": "misterbalise2@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "symfony/var-dumper": "^6.3",
+    "phpunit/phpunit": "^10.3"
+  },
   "require": {
     "ext-readline": "*"
   }
